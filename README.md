@@ -1,58 +1,218 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏠 Ziind Laafi — Plateforme Immobilière
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Projet Intégrateur — Licence 2 IT | ISIG HIGH TEC | Université Aube Nouvelle | 2025-2026
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Description
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Ziind Laafi** (« L'habitat serein » en mooré) est une plateforme web de gestion immobilière développée dans le cadre du projet intégrateur de Licence 2 Informatique. Elle permet la mise en relation entre bailleurs (propriétaires) et clients (acquéreurs ou locataires) via une agence immobilière numérique.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Fonctionnalités
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Visiteur anonyme
+- Consulter le catalogue des propriétés publiées
+- Filtrer par type, usage, option (location/vente) et zone géographique
+- Voir la fiche détaillée d'une propriété
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Client (connecté)
+- Créer un compte et se connecter
+- Ajouter des propriétés en favoris
+- Faire des demandes de visite
+- Consulter l'historique de ses visites et favoris
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Bailleur (connecté)
+- Déposer des annonces immobilières avec photos
+- Consulter, modifier et supprimer ses annonces
+- Suivre le statut de ses annonces (en attente / publiée / retirée)
 
-## Agentic Development
+### Agent immobilier
+- Valider ou refuser les annonces des bailleurs
+- Traiter les demandes de visite des clients
+- Consulter la liste de ses clients affectés
+- Publier directement des annonces d'agence
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Manager (administrateur)
+- Gérer tous les comptes utilisateurs (CRUD)
+- Affecter un client à un agent
+- Accéder au tableau de bord statistique
+- Retirer des annonces publiques
 
+---
+
+## 🛠️ Technologies utilisées
+
+| Technologie | Version |
+|-------------|---------|
+| PHP | 8.4 |
+| Laravel | 13.x |
+| MySQL | 8.x |
+| Tailwind CSS | 4.x (CDN) |
+| Bootstrap | 5.3 (partiel) |
+
+---
+
+## ⚙️ Installation
+
+### Prérequis
+- WAMP / XAMPP / Laragon installé
+- PHP >= 8.1
+- Composer installé
+- MySQL actif
+
+### Étapes
+
+**1. Cloner ou extraire le projet**
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/VOTRE_NOM/ziind-laafi.git
+cd ziind-laafi
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**2. Installer les dépendances PHP**
+```bash
+composer install
+```
 
-## Contributing
+**3. Configurer l'environnement**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**4. Configurer la base de données dans `.env`**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=u_auben_immo
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Code of Conduct
+**5. Créer la base de données**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Créez une base de données nommée `u_auben_immo` dans phpMyAdmin ou via MySQL.
 
-## Security Vulnerabilities
+Ou importez directement le fichier SQL fourni :
+```bash
+mysql -u root -p u_auben_immo < database/u_auben_immo.sql
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**6. Exécuter les migrations et les seeders**
+```bash
+php artisan migrate
+php artisan db:seed
+```
 
-## License
+**7. Lier le stockage des images**
+```bash
+php artisan storage:link
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**8. Lancer le serveur**
+```bash
+php artisan serve
+```
+
+Accédez à l'application sur : **http://127.0.0.1:8000**
+
+---
+
+## 👤 Comptes de test
+
+| Rôle | Email | Mot de passe |
+|------|-------|--------------|
+| Manager | manager@ziindlaafi.com | 12345678 |
+| Agent | agent@ziindlaafi.com | 12345678 |
+| Bailleur | bailleur@ziindlaafi.com | 12345678 |
+| Client | client@ziindlaafi.com | 12345678 |
+
+---
+
+## 🗂️ Structure du projet
+
+```
+ziind-laafi/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── AuthController.php
+│   │   │   ├── PropertyController.php
+│   │   │   └── ManagerUserController.php
+│   │   └── Middleware/
+│   │       └── RoleMiddleware.php
+│   └── Models/
+│       ├── User.php
+│       ├── Property.php
+│       ├── VisitRequest.php
+│       └── Favorite.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── resources/
+│   └── views/
+│       ├── layouts/app.blade.php
+│       ├── properties/
+│       ├── agent/
+│       ├── bailleur/
+│       ├── client/
+│       └── managers/
+├── routes/
+│   └── web.php
+└── tests/
+    └── Unit/
+        ├── PropertyTest.php
+        └── UserTest.php
+```
+
+---
+
+## 🧪 Tests unitaires
+
+Le projet contient **8 tests unitaires** couvrant la logique métier :
+
+```bash
+php artisan test
+```
+
+| Test | Description |
+|------|-------------|
+| test_annonce_bailleur_est_en_attente | Une annonce bailleur est en attente de validation |
+| test_annonce_agent_est_publiee | Une annonce agent est directement publiée |
+| test_statuts_valides_dune_annonce | Vérifie les statuts valides d'une annonce |
+| test_prix_et_superficie_sont_numeriques | Prix et superficie sont des nombres positifs |
+| test_types_de_biens_autorises | Vérifie les types de biens autorisés |
+| test_roles_autorises | Vérifie les rôles utilisateurs autorisés |
+| test_mot_de_passe_est_hashe | Le mot de passe est bien hashé (bcrypt) |
+| test_inscription_libre_impossible_pour_manager | Manager et agent ne peuvent pas s'inscrire librement |
+
+---
+
+## 🔐 Sécurité
+
+- Mots de passe hashés avec **bcrypt** (via Laravel Hash)
+- Protection **CSRF** sur tous les formulaires
+- Protection **XSS** via l'échappement Blade (`{{ }}`)
+- **Contrôle d'accès par rôle** via middleware personnalisé
+- **Requêtes préparées** via Eloquent ORM (protection injection SQL)
+- Photos stockées sur le serveur (filesystem), seul le chemin en base
+
+---
+
+## 👥 Membres du groupe
+
+| Nom | Rôle |
+|-----|------|
+| OUEDRAOGO KISWENDSIDA AMIIR | Chef de projet |
+| YERBANGA HOUSNIA | Développeur Backend |
+| OUEDRAOGO BARKWENDE ELVINA SHALOM | Développeur Frontend |
+| SENI WILL ALAN TRESOR | Modélisation UML |
+| OUATTARA ELZA | Tests & Documentation |
+
+---
+
+## 📄 Licence
+
+Projet académique — ISIG HIGH TEC, Université Aube Nouvelle, Burkina Faso © 2026
