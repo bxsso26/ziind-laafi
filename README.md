@@ -66,9 +66,11 @@
 
 **1. Cloner ou extraire le projet**
 ```bash
-git clone https://github.com/VOTRE_NOM/ziind-laafi.git
+git clone https://github.com/bxsso26/ziind-laafi.git
 cd ziind-laafi
 ```
+être dabord sur d'être sur la dernière racine du nom du projet sinon faites cd ziind-laafi
+ ou cd ziind-laafi-main selon le nom avant de continuer les étapes suivantes
 
 **2. Installer les dépendances PHP**
 ```bash
