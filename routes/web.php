@@ -10,7 +10,6 @@ use App\Http\Controllers\AuthController;
 // ROUTES PUBLIQUES
 Route::get('/', [PropertyController::class, 'index'])->name('home');
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
-Route::get('/properties/{id}', [PropertyController::class, 'show'])->name('properties.show');
 Route::get('/authentification', fn() => view('auth'))->name('auth.page');
 
 // Auth
@@ -55,3 +54,4 @@ Route::middleware(['auth', 'role:manager'])->prefix('manager')->name('manager.')
     Route::get('/properties', [ManagerUserController::class, 'manageIndex'])->name('properties.index');
     Route::patch('/properties/{id}/retirer', [ManagerUserController::class, 'retirer'])->name('properties.retirer');
 });
+Route::get('/properties/{id}', [PropertyController::class, 'show'])->name('properties.show');

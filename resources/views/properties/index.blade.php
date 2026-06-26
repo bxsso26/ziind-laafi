@@ -53,7 +53,7 @@
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($properties as $prop)
             @php
-                $images = [
+                $defaultImages = [
                     'Villa' => 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=600&auto=format&fit=crop',
                     'Appartement' => 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
                     'Terrain' => 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop',
@@ -61,8 +61,10 @@
                     'Immeuble' => 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=600&auto=format&fit=crop',
                     'Magasin' => 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=600&auto=format&fit=crop'
                 ];
-                $imageUrl = $images[$prop->type] ?? 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=600&auto=format&fit=crop';
-            @endphp
+                $imageUrl = !empty($prop->photo_path) 
+        ? asset('storage/' . $prop->photo_path) 
+        : ($defaultImages[$prop->type] ?? 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=600&auto=format&fit=crop');
+        @endphp
 
             <a href="{{ route('properties.show', $prop->id) }}" class="block group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md hover:shadow-2xl hover:-translate-y-1">
                 <div class="relative overflow-hidden h-56 bg-slate-100">
